@@ -33,5 +33,9 @@ public class TestDataTypes
         // char
         char h = 'c';
         System.out.println( h );
+        
+        // constant
+        final int MY_CONSTANT = 42;
+        System.out.println( MY_CONSTANT );
     }
 }
