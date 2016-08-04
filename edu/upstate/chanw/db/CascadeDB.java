@@ -16,10 +16,10 @@ public class CascadeDB
     {
         try
         {
-            conn            = CascadeDBReadConnection.getConnection();
-            stat            = conn.createStatement( 
-                                  ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY );
-            result          = null;
+            conn   = CascadeDBReadConnection.getConnection();
+            stat   = conn.createStatement( 
+                     ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY );
+            result = null;
         }
         catch( SQLException e )
         {
@@ -33,7 +33,7 @@ public class CascadeDB
     {
         stat.close();
         conn.close();
-        result          = null;
+        result = null;
     }
 
     public Document getDataAsDocument( String sql ) throws Exception
