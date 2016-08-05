@@ -28,6 +28,9 @@ if( rs.next() )
 
 	out.print( "</tr>" );
 	
+	// move cursor back
+	rs.beforeFirst();
+
 	while( rs.next() )
 	{
 		out.print( "<tr>" );
