@@ -3,7 +3,6 @@
 Context context     = null;
 DataSource ds       = null;
 Connection conn     = null;
-Statement stmt      = null;
 
 Statement initialize( Statement stmt )
 {
