@@ -1,5 +1,4 @@
 <%@ include file = "functions.jsp" %>
-<%@ page import="java.sql.*, javax.sql.*, javax.naming.*" %>
 <%! String title = "Tables"; %>
 <html>
 <head>
