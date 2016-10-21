@@ -1,5 +1,5 @@
 <%@ include file = "functions.jsp" %>
-<%@page import="java.sql.*, javax.sql.*, javax.naming.*"%>
+<%@ page import="java.sql.*, javax.sql.*, javax.naming.*" %>
 <%! String title = "ACL Entry"; %>
 <html>
 <head>
