@@ -1,8 +1,8 @@
 <%@page import="java.sql.*, javax.sql.*, javax.naming.*"%>
 <%!
-Context context     = null;
-DataSource ds       = null;
-Connection conn     = null;
+Context context = null;
+DataSource ds   = null;
+Connection conn = null;
 
 Statement initialize( Statement stmt )
 {
@@ -24,6 +24,7 @@ Statement initialize( Statement stmt )
 String getTable( ResultSet rs )
 {
     StringBuffer tableString = new StringBuffer();
+    int counter = 0;
     
     try
     {
@@ -45,12 +46,16 @@ String getTable( ResultSet rs )
     
             while( rs.next() )
             {
-                tableString.append( "<tr>" );
+                if( counter % 2 == 0 )
+                    tableString.append( "<tr>" );
+                else
+                    tableString.append( "<tr class='tablerow1'>" );
         
                 for( int i = 1; i <= columnCount; i++ )
                     tableString.append( "<td>" + rs.getString( i ) + "</td>" );
         
                 tableString.append( "</tr>" );
+                counter++;
             }
 
             tableString.append( "</table>" );

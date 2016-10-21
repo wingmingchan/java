@@ -1,5 +1,5 @@
 <%@ include file = "functions.jsp" %>
-<%! String title = "Tables"; %>
+<%! String title = "All Tables"; %>
 <html>
 <head>
 <title><% out.print( title ); %></title>
@@ -15,7 +15,7 @@ ResultSet rs   = null;
 
 try
 {
-    stmt       = initialize( stmt );
+    initialize( stmt );
     String sql = "SELECT tablespace_name, table_name FROM all_tables " +
                  "WHERE tablespace_name LIKE 'C%' " +
                  "AND table_name like 'CXML_%' " +
