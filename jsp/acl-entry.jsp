@@ -1,5 +1,5 @@
-<%@ page import="edu.upstate.chanw.db.*" %>
-<%@ page import="java.sql.*" %>
+<%@ include file = "functions.jsp" %>
+<%@page import="java.sql.*, javax.sql.*, javax.naming.*"%>
 <%! String title = "ACL Entry"; %>
 <html>
 <head>
@@ -9,39 +9,22 @@
 </head>
 <body class="bg_white">
 <h1><% out.print( title ); %></h1>
+
 <%
-String sql   = "select * from cxml_aclentry where groupName like 'vitality' ";
+Statement stmt = null;
+ResultSet rs   = null;
 
-CascadeDB db = new CascadeDB();
-ResultSet rs = db.getResultSet( sql );
-
-if( rs.next() )
+try
 {
-    ResultSetMetaData m = rs.getMetaData();
-    int columnCount     = m.getColumnCount();
-    
-    out.println( "<table class='tcellspacing1 tcellpadding5' summary='Table'>" );
-    out.print( "<tr class='bg1 text_white'>" );
-    
-    for( int i = 1; i <= columnCount; i++ )
-        out.print( "<th>" + m.getColumnName( i ) + "</th>" );
-
-    out.print( "</tr>" );
-    
-    // move cursor back
-    rs.beforeFirst();
-
-    while( rs.next() )
-    {
-        out.print( "<tr>" );
-        
-        for( int i = 1; i <= columnCount; i++ )
-            out.print( "<td>" + rs.getString( i ) + "</td>" );
-        
-        out.println( "</tr>" );
-    }
-
-    out.println( "</table>" );
+    stmt       = initialize( stmt );
+    String sql = "select * from cxml_aclentry where groupName like 'vitality'";                   
+    rs         = stmt.executeQuery( sql );
+    out.println( getTable( rs ) );
+    finalize( rs, stmt );
+}
+catch( SQLException e )
+{
+    out.println( e );
 }
 %>
 <p><a href="index.jsp">Back to Index</a></p>
