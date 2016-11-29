@@ -12,7 +12,7 @@
 <%
 try
 {
-	CascadeDB db = new CascadeDB();	
+    CascadeDB db = new CascadeDB();    
     String sql   = "SELECT * FROM cxml_aclentry WHERE groupName LIKE 'vitality'";                   
     db.executeQuery( sql );
     out.println( db.getTable() );
