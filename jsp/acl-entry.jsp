@@ -1,4 +1,5 @@
-<%@ include file = "functions.jsp" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="edu.upstate.chanw.db.*" %>
 <%! String title = "ACL Entry"; %>
 <html>
 <head>
@@ -8,18 +9,14 @@
 </head>
 <body class="bg_white">
 <h1><% out.print( title ); %></h1>
-
 <%
-Statement stmt = null;
-ResultSet rs   = null;
-
 try
 {
-    stmt       = initialize( stmt );
-    String sql = "select * from cxml_aclentry where groupName like 'vitality'";                   
-    rs         = stmt.executeQuery( sql );
-    out.println( getTable( rs ) );
-    finalize( rs, stmt );
+	CascadeDB db = new CascadeDB();	
+    String sql   = "SELECT * FROM cxml_aclentry WHERE groupName LIKE 'vitality'";                   
+    db.executeQuery( sql );
+    out.println( db.getTable() );
+    db.finalize();
 }
 catch( SQLException e )
 {
