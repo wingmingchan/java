@@ -15,19 +15,23 @@ ResultSet rs   = null;
 
 try
 {
-    initialize( stmt );
+    stmt       = initialize( stmt );
     String sql = "SELECT tablespace_name, table_name FROM all_tables " +
                  "WHERE tablespace_name LIKE 'C%' " +
                  "AND table_name like 'CXML_%' " +
                  "ORDER BY table_name";
-
     rs         = stmt.executeQuery( sql );
+    
     out.println( getTable( rs ) );
     finalize( rs, stmt );
 }
 catch( SQLException e )
 {
     out.println( e );
+}
+catch( NamingException e )
+{
+	out.println( e );
 }
 %>
 <p><a href="index.jsp">Back to Index</a></p>
