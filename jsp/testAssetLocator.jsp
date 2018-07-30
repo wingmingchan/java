@@ -35,8 +35,8 @@ AssetLocator assetLocator = new AssetLocator( cascadeObjectProvider, dBDataProvi
 
 LocatorTool locatorTool = assetLocator.getLocatorTool();
 BlockAPIAdapter objAPI = ( BlockAPIAdapter )locatorTool.locateBlock(
-	"_cascade/blocks/code/about-index-top-movie-text", "formats" );
-	
+    "_cascade/blocks/code/about-index-top-movie-text", "formats" );
+    
 out.println( ( locatorTool )  );
 out.println( objAPI.getClass().getName() );
 %>
