@@ -15,7 +15,6 @@
 <body class="bg_white">
 <h1><% out.print( title ); %></h1>
 <%
-
 CascadeObjectProvider cascadeObjectProvider = new CascadeObjectProvider();
 /*/
 /*/
@@ -32,7 +31,6 @@ MetadataSet ms = cascadeObjectProvider.getMetadataSet( pageDom );
 StructuredDataDefinition dd = cascadeObjectProvider.getStructuredDataDefinition( pageDom );
 
 out.println( dd.getXml() );
-
 
 BaseAsset a = cascadeObjectProvider.getReadBaseAsset(
     "275f515a8b7f08ee5668fbfd3fe3e766", EntityTypes.TYPE_PAGE );
