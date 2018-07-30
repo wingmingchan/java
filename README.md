@@ -1,2 +1,2 @@
 # java
-Java examples.
+Java and JSP examples.
