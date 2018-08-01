@@ -169,6 +169,21 @@ final class DBDataProvider
         return id;
     }
    
+    public ArrayList<String> getAssetTags( String assetId )
+    {
+        return this.getAssetTags( true, assetId );
+    }
+    
+    public ArrayList<String> getAssetTags( boolean closeStmt, String assetId )
+    {
+        ArrayList<String> tags = new ArrayList<String>();
+        String sql = "SELECT name FROM CXML_TAG WHERE id IN " +
+            "(SELECT tagid FROM CXML_TAG_FCE_LINK WHERE assetid='" + assetId + "')";
+        populateList( closeStmt, sql, tags );
+
+        return tags;
+    }
+    
     public ArrayList<String> getFolderChildrenIDs( String fid )
     {
         return this.getFolderChildrenIDs( true, fid );
@@ -287,6 +302,20 @@ final class DBDataProvider
         return id;
     }
 
+    public ArrayList<String> getSystemWideTags()
+    {
+        return this.getSystemWideTags( true );
+    }
+    
+    public ArrayList<String> getSystemWideTags( boolean closeStmt )
+    {
+        ArrayList<String> tags = new ArrayList<String>();
+        String sql = "SELECT name FROM CXML_TAG WHERE siteid IS NULL";
+        populateList( closeStmt, sql, tags );
+
+        return tags;
+    }
+    
     public ArrayList<String> getUserNames()
     {
         return this.getUserNames( true );
