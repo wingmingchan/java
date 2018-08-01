@@ -9,7 +9,7 @@
 <h1><% out.print( title ); %></h1>
 <%
 ExternalScriptInvoker externalScriptInvoker = new ExternalScriptInvoker(
-    "http://web.upstate.edu/chanw/retrieve-tb-name.php?" +    
+    "http://www.upstate.edu/chanw/retrieve-tb-name.php?" +    
     "id=85ebedf98b7f08ee6c49236e733d058d" );
     
 String result = externalScriptInvoker.invokeExternalScript();
