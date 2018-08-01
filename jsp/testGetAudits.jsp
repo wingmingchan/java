@@ -4,7 +4,7 @@
 <%@ include file="FolderMapProvider.jsp" %>
 <%@ include file="DBDataProvider.jsp" %>
 
-<%! String title = "Test DBDataProvider"; %>
+<%! String title = "Test getAssetAuditsByAction"; %>
 <html>
 <head>
 <title><% out.print( title ); %></title>
