@@ -1,6 +1,5 @@
 <%@ page import="com.hannonhill.cascade.model.service.ServiceProviderHolderBean" %>
 <%@ page import="com.hannonhill.cascade.view.beans.security.LoginInformationBean" %>
-<%@ page import="com.hannonhill.cascade.view.struts.security.StrutsPerformLogin" %>
 <%@ include file = "LoginCheckerException.jsp" %>
 <%
 final class LoginChecker
@@ -27,9 +26,15 @@ final class LoginChecker
         
         this.login          = login;
         this.groupAllowedIn = groupAllowedIn.trim();
+        
+        if( !this.isUserInGroup() )
+        {
+            throw new LoginCheckerException(
+                "You are not authorized to view pages here." );
+        }
     }
     
-    public boolean isUserInGroup()
+    private boolean isUserInGroup()
     {
         boolean allowed = false;
             
